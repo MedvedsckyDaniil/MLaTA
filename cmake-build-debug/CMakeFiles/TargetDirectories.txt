@@ -1,0 +1,3 @@
+/home/merlin/CLionProjects/MLaTA/cmake-build-debug/CMakeFiles/MLaTA.dir
+/home/merlin/CLionProjects/MLaTA/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/merlin/CLionProjects/MLaTA/cmake-build-debug/CMakeFiles/rebuild_cache.dir
