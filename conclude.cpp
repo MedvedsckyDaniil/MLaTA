@@ -78,11 +78,11 @@ std::pair<std::string, std::string> conclude(const std::vector<struct statement>
         }
         else if (rule == "modus_tollens")                // -Q, P→Q ⊢ -P
         {
-            std::string check = "!" + A[j].this_statement;
-            not_double_denial(check);
+            std::string Q = "!" + A[j].this_statement;
+            not_double_denial(Q);
             // if A[i] == "(" + ... + ">" + !A[j] + ")"
-            size_t ind = A[i].this_statement.find(check);
-            if ((ind != std::string::npos) & (A[i].this_statement.size() == ind + check.size() + 1))
+            size_t ind = A[i].this_statement.find(Q);
+            if ((ind != std::string::npos) & (A[i].this_statement.size() == ind + Q.size() + 1))
             {
                 used = "modus_tollens";
                 A_new = "!" + A[i].this_statement.substr(1, ind - 1 - 1);
@@ -111,10 +111,10 @@ std::pair<std::string, std::string> conclude(const std::vector<struct statement>
             {
                 used = "гипотетический_силлогизм";
                 size_t ind = Q.size() + 2;
-                A_new = A[i].this_statement.substr(ind, (A[i].this_statement.size() - 1) - ind);
+                A_new = A[j].this_statement.substr(0, A[j].this_statement.find(Q));     // (P→
+                A_new += A[i].this_statement.substr(ind, A[i].this_statement.size() - ind); // Q)
                 find = true;
             }
-
         }
         else if (rule == "разделительный_силлогизм")     // P, P ⊕ Q ⊢ -Q
         {                                                // P, (-P→-Q)→-(P→Q) ⊢ -Q
