@@ -71,21 +71,31 @@ A∨B = -A→B <br/>
 A⊕B = (-A∧B)∨(A∧-B) = -(A∨-B)∨-(-A∨B) = -(-A→-B)∨-(A→B) = (-A→-B)→-(A→B) <br/>
 A≡B = -(A⊕B) = (A∧B)∨(-A∧-B) = -(-A∨-B)∨-(A∨B) = -(A→-B)∨-(-A→B) = (A→-B)→-(-A→B)
 
+#### Конвертированные правила вывода
+
+`if (rule == "дизъюнктивный_силлогизм")` <br/>
+-P, P∨Q ⊢ Q <br/>
+-P, -P→Q ⊢ Q <br/>
+P, P→Q ⊢ Q <br/>
+`if (rule == "разделительный_силлогизм")` <br/>
+P, P ⊕ Q ⊢ -Q <br/>
+P, (-P→-Q)→-(P→Q) ⊢ -Q <br/>
+
 ## Результаты
 
 Таблица 3. Результаты выводов теорем
 
 | **Номер теоремы**  | Теорема                   | Сконвертированная теорема       | "modus_ponens"                          | "modus_tollens"                        | "дизъюнктивный_силлогизм"               | "гипотетический_силлогизм"              | "разделительный_силлогизм"             | all of them                            |
 |--------------------|---------------------------|---------------------------------|-----------------------------------------|----------------------------------------|-----------------------------------------|-----------------------------------------|----------------------------------------|----------------------------------------|
-| **-**              | (A>A)                     | (A>A)                           | <span style='color: green;'> ✓ </span>  | <span style='color: red;'> ✗ </span>   | <span style='color: green;'> ✓ </span>  | <span style='color: green;'> ✓ </span>  | <span style='color: red;'> ✗ </span>   | <span style='color: green;'> ✓ </span> |
-| **A4**             | ((A*B)>A)                 | (!(A>!B)>A)                     | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>    | <span style='color: green;'> ✓ </span>  | <span style='color: red;'> ✗ </span>   | <span style='color: green;'> ✓ </span> |
-| **A5**             | ((A*B)>B)                 | (!(A>!B)>B)                     | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>    | <span style='color: green;'> ✓ </span>  | <span style='color: red;'> ✗ </span>   | <span style='color: green;'> ✓ </span> |
-| **A6**             | (A>(B>(A*B)))             | (A>(B>!(A>!B)))                 | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>   |
-| **A7**             | (A>(A\|B))                | (A>(!A>B))                      | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>    | <span style='color: green;'> ✓ </span>  | <span style='color: red;'> ✗ </span>   | <span style='color: green;'> ✓ </span> |
-| **A8**             | (B>(A\|B))                | (B>(!A>B))                      | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>    | <span style='color: green;'> ✓ </span>  | <span style='color: red;'> ✗ </span>   | <span style='color: green;'> ✓ </span> |
+| **-**              | (A>A)                     | (A>A)                           | <span style='color: green;'> ✓ </span>  | <span style='color: red;'> ✗ </span>   | <span style='color: green;'> ✓ </span>  | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>   | <span style='color: green;'> ✓ </span> |
+| **A4**             | ((A*B)>A)                 | (!(A>!B)>A)                     | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>  |
+| **A5**             | ((A*B)>B)                 | (!(A>!B)>B)                     | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>  |
+| **A6**             | (A>(B>(A*B)))             | (A>(B>!(A>!B)))                 | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>    |
+| **A7**             | (A>(A\|B))                | (A>(!A>B))                      | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>  |
+| **A8**             | (B>(A\|B))                | (B>(!A>B))                      | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>  |
 | **A9**             | ((A>C)>((B>C)>((A\|B)>C)) | ((A>C)>((B>C)>((!A>B)>C))       | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>   |
-| **A10**            | (!A>(A>B))                | (!A>(A>B))                      | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>    | <span style='color: green;'> ✓ </span>  | <span style='color: red;'> ✗ </span>   | <span style='color: green;'> ✓ </span> |
-| **A11**            | (A\|!A)                   | (!A>!A)                         | <span style='color: green;'> ✓ </span>  | <span style='color: red;'> ✗ </span>   | <span style='color: green;'> ✓ </span>  | <span style='color: green;'> ✓ </span>  | <span style='color: red;'> ✗ </span>   | <span style='color: green;'> ✓ </span> |
+| **A10**            | (!A>(A>B))                | (!A>(A>B))                      | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>    | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>  |
+| **A11**            | (A\|!A)                   | (!A>!A)                         | <span style='color: green;'> ✓ </span>  | <span style='color: red;'> ✗ </span>   | <span style='color: green;'> ✓ </span>  | <span style='color: red;'> ✗ </span>   | <span style='color: red;'> ✗ </span>   | <span style='color: green;'> ✓ </span> |
 
 <span style='color: green;'> ✓ </span> – используя это правило, программа смогла вывести выражение; <br/>
 <span style='color: red;'> ✗ </span> – используя это правило, программа не смогла вывести выражение.
@@ -112,20 +122,7 @@ A≡B = -(A⊕B) = (A∧B)∨(-A∧-B) = -(-A∨-B)∨-(A∨B) = -(A→-B)∨-(-
 
 #### "гипотетический_силлогизм"
 
-`(A>A)` <br/>
-![(A>A).png](/results/гипотетический_силлогизм/(A>A).png) <br/>
-`((A*B)>A)` <br/>
-![((A*B)>A).png](/results/гипотетический_силлогизм/((A*B)>A).png) <br/>
-`((A*B)>B)` <br/>
-![((A*B)>B).png](/results/гипотетический_силлогизм/((A*B)>B).png) <br/>
-`(A>(A|B))` <br/>
-![(A>(A|B)).png](/results/гипотетический_силлогизм/(A>(A|B)).png) <br/>
-`(B>(A|B))` <br/>
-![(B>(A|B)).png](/results/гипотетический_силлогизм/(B>(A|B)).png) <br/>
-`(!A>(A>B))` <br/>
-![(!A>(A>B)).png](/results/гипотетический_силлогизм/(!A>(A>B)).png) <br/>
-`(A|!A)` <br/>
-![(A|!A).png](/results/гипотетический_силлогизм/(A|!A).png)
+<span style='color: red;'> ✗ </span>
 
 #### "разделительный_силлогизм"
 
@@ -135,16 +132,6 @@ A≡B = -(A⊕B) = (A∧B)∨(-A∧-B) = -(-A∨-B)∨-(A∨B) = -(A→-B)∨-(-
 
 `(A>A)` <br/>
 ![(A>A).png](/results/all_of_them/(A>A).png) <br/>
-`((A*B)>A)` <br/>
-![((A*B)>A).png](/results/all_of_them/((A*B)>A).png) <br/>
-`((A*B)>B)` <br/>
-![((A*B)>B).png](/results/all_of_them/((A*B)>B).png) <br/>
-`(A>(A|B))` <br/>
-![(A>(A|B)).png](/results/all_of_them/(A>(A|B)).png) <br/>
-`(B>(A|B))` <br/>
-![(B>(A|B)).png](/results/all_of_them/(B>(A|B)).png) <br/>
-`(!A>(A>B))` <br/>
-![(!A>(A>B)).png](/results/all_of_them/(!A>(A>B)).png) <br/>
 `(A|!A)` <br/>
 ![(A|!A).png](/results/all_of_them/(A|!A).png)
 
